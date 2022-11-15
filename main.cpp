@@ -352,7 +352,7 @@ int main()
     for(it2 = ft_map3.begin(); it2 != ft_map3.end(); it2++)
         std::cout << "ft_map3 après swap = " << it2->first << " => " << it2->second << std::endl;
     std::cout << std::endl;
-/*
+
     std::cout << "..................ERASE....................." << std::endl << std::endl;
     std_map3.erase(std_map3.begin());
     for(it = std_map3.begin(); it != std_map3.end(); it++)
@@ -379,9 +379,79 @@ int main()
     std::cout << "std_map4 = " << std_map1.empty() << std::endl;
     std::cout << "ft_map4 = " << ft_map1.empty() << std::endl;
     std::cout << std::endl;        
-*/
+
+    std::cout << "...................FIND....................." << std::endl << std::endl;
+    std::cout << "cat = " << std_map2.find("cat")->second << std::endl;
+    std::cout << "cat = " << ft_map2.find("cat")->second << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "...................COUNT...................." << std::endl << std::endl;
+    std::cout << std_map2.count("cat") << std::endl;
+    std::cout << ft_map2.count("cat") << std::endl;
+    std::cout << std::endl;
+    std::cout << std_map2.count("rat") << std::endl;
+    std::cout << ft_map2.count("rat") << std::endl;
+    std::cout << std::endl;
+
+    std::cout << ".............UPPER AND LOWER................" << std::endl << std::endl;
+    std::map<char,int> mymap;
+    std::map<char,int>::iterator itlow,itup;
+
+    mymap['a']=20;
+    mymap['b']=40;
+    mymap['c']=60;
+    mymap['d']=80;
+    mymap['e']=100;
+
+    itlow=mymap.lower_bound ('b');
+    itup=mymap.upper_bound ('d');
+
+    mymap.erase(itlow,itup);
+
+    for (std::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+        std::cout << it->first << " => " << it->second << '\n';
+
+    std::cout << std::endl;
+    ft::map<char,int> mymap1;
+    ft::map<char,int>::iterator it1low,it1up;
+
+    mymap1['a'] = 20;
+    mymap1['b'] = 40;
+    mymap1['c'] = 60;
+    mymap1['d'] = 80;
+    mymap1['e'] = 100;
+
+    it1low=mymap1.lower_bound ('b');
+    it1up=mymap1.upper_bound ('d');
+
+    mymap1.erase(it1low,it1up);
 
 
+    for (ft::map<char,int>::iterator it = mymap1.begin(); it!=mymap1.end(); ++it)
+        std::cout << it->first << " => " << it->second << '\n';
+
+    std::cout << std::endl;
+
+    std::cout << "................EQUAL_RANGE................." << std::endl << std::endl;
+    std::pair<std::map<char,int>::iterator,std::map<char,int>::iterator> ret;
+    ret = mymap.equal_range('b');
+
+    std::cout << "lower bound points to: ";
+    std::cout << ret.first->first << " => " << ret.first->second << '\n';
+
+    std::cout << "upper bound points to: ";
+    std::cout << ret.second->first << " => " << ret.second->second << '\n';
+    std::cout << std::endl;
+    ft::pair<ft::map<char,int>::iterator,ft::map<char,int>::iterator> ret1;
+    ret1 = mymap1.equal_range('b');
+
+    std::cout << "lower bound points to: ";
+    std::cout << ret1.first->first << " => " << ret1.first->second << '\n';
+
+    std::cout << "upper bound points to: ";
+    std::cout << ret1.second->first << " => " << ret1.second->second << '\n';
+    std::cout << std::endl;
+    
     std::cout << "..................STACK....................." << std::endl << std::endl;
 
     std::cout << "..................EMPTY....................." << std::endl << std::endl;
